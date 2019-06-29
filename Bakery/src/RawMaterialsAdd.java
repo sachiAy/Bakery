@@ -208,7 +208,7 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
         try {
             Statement s = DBconnector.getConnection().createStatement();
             s.executeUpdate("insert into materials (materialId,materialName,quantity,unitPrice,useMaterials,date,wastage) values ('" + MaterialID + "','" + MaterialName + "','" + Quantity + "','" + UnitPrice + "','" + Used + "','" + date_to_store1 + "','" + Wastage + "')");
-            //jTextField1.setText("");
+            jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
