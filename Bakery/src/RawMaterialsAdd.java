@@ -52,9 +52,9 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add a Material"));
 
-        jLabel1.setText("Material ID");
+        jLabel1.setText("Material Name");
 
-        jLabel2.setText("Material Name");
+        jLabel2.setText("Material ID");
 
         jLabel3.setText("Quantity");
 
@@ -191,6 +191,7 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
         String MaterialName = jTextField2.getText();
         String Quantity = jTextField3.getText();
         String UnitPrice = jTextField4.getText();
+        
         String Used;
         Used = jTextField5.getText();
         
@@ -198,14 +199,16 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
         Wastage=Integer.parseInt(Quantity)-Integer.parseInt(Used);
         
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        jXDatePicker1.setFormats(dateFormat);
-        DateFormat sysDate = new SimpleDateFormat("yyyy/MM/dd");
-        String date_to_store = sysDate.format(jXDatePicker1.getDate());
+        jXDatePicker2.setFormats(dateFormat);
+        DateFormat sysDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String date_to_store1 = sysDate.format(jXDatePicker2.getDate()).toString();
+        
+       
 
         try {
             Statement s = DBconnector.getConnection().createStatement();
-            s.executeUpdate("insert into materials (materialId,materialName,quantity,unitPrice,useMaterials,date,wastage) values ('" + MaterialID + "','" + MaterialName + "','" + Quantity + "','" + UnitPrice + "','" + Used + "','" + date_to_store + "','" + Wastage + "')");
-            jTextField1.setText("");
+            s.executeUpdate("insert into materials (materialId,materialName,quantity,unitPrice,useMaterials,date,wastage) values ('" + MaterialID + "','" + MaterialName + "','" + Quantity + "','" + UnitPrice + "','" + Used + "','" + date_to_store1 + "','" + Wastage + "')");
+            //jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
             jTextField4.setText("");
