@@ -166,9 +166,13 @@ public class ProductAdd extends javax.swing.JFrame {
         String ProductName = jTextField2.getText();
         String Quantity = jTextField3.getText();
         String UnitPrice = jTextField4.getText();
-        String Sales = jTextField5.getText();
-        String Wastage = jTextField6.getText();
-        String Income = jTextField7.getText();
+        
+        String Sales = jTextField5.getText(); 
+        int Wastage;
+        int Income;
+        Wastage = Integer.parseInt(Quantity)-Integer.parseInt(Sales);
+        Income=Integer.parseInt(Sales)*Integer.parseInt(UnitPrice);
+        
         
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         jXDatePicker1.setFormats(dateFormat);
@@ -184,8 +188,7 @@ public class ProductAdd extends javax.swing.JFrame {
             jTextField3.setText("");
             jTextField4.setText("");
             jTextField5.setText("");
-            jTextField6.setText("");
-            jTextField7.setText("");
+            
             //jXDatePicker1.setText("");
 
             JOptionPane.showMessageDialog(rootPane, "Successed");
