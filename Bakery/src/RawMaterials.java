@@ -40,6 +40,11 @@ public class RawMaterials extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Raw Materials"));
 
@@ -159,6 +164,17 @@ public class RawMaterials extends javax.swing.JFrame {
         goToDashboard.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+         try{
+            Statement s = DBconnector.getConnection().createStatement();
+            ResultSet rs = s.executeQuery("select * from materials");
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        }catch(Exception e){
+            System.out.println("Exception = " + e);
+        }
+    }//GEN-LAST:event_formWindowActivated
     
 
     /**
