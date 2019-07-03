@@ -77,9 +77,9 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 290, 60));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dashboard.jpeg"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 430, 310));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 510, 340));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 475, 333));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,8 +100,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Reports goToReports=new Reports();
-        goToReports.setVisible(true);
+        DailyReport goToDailyReport=new DailyReport();
+        goToDailyReport.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
