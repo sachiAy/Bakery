@@ -1,9 +1,14 @@
+
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Sachini Ayeshika
@@ -15,6 +20,7 @@ public class RawMaterialsEdit extends javax.swing.JFrame {
      */
     public RawMaterialsEdit() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -98,6 +104,11 @@ public class RawMaterialsEdit extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Update");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 355, -1, -1));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/home.png"))); // NOI18N
@@ -131,6 +142,25 @@ public class RawMaterialsEdit extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         try {
+          
+            Statement s = DBconnector.getConnection().createStatement();    
+            ResultSet rs = s.executeQuery("select * from materials where '"+jTextField1.getText()+"'");
+            if(rs.next()){
+                String x1=rs.getString("materialName");
+                jTextField2.setText(x1);
+                String x2=rs.getString("quantity");
+                jTextField3.setText(x2);
+                String x3=rs.getString("unitPrice");
+                jTextField4.setText(x3);
+                String x4=rs.getString("useMaterials");
+                jTextField5.setText(x4);
+                Date x5 = rs.getDate("date");
+                jXDatePicker1.setDate(x5);
+            }
+        } catch (Exception e) {
+            System.out.println("Exception = " + e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -147,6 +177,26 @@ public class RawMaterialsEdit extends javax.swing.JFrame {
         goToPrevious.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String x = "update materials set materialName='" + jTextField2.getText() + "', quantity='" + jTextField3.getText() + "', unitPrice='" + jTextField4.getText() + "', useMaterials='" + jTextField5.getText() + "', date='" + String.valueOf(jXDatePicker1.getDate()) + "' where materialId='" + jTextField1.getText() + "'";
+            Statement s = DBconnector.getConnection().createStatement();
+            s.execute(x);
+            JOptionPane.showMessageDialog(rootPane, "Updated");
+            
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jXDatePicker1.setFormats("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
