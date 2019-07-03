@@ -21,6 +21,7 @@ public class ProductAdd extends javax.swing.JFrame {
      */
     public ProductAdd() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

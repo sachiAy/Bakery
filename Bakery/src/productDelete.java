@@ -21,6 +21,7 @@ public class productDelete extends javax.swing.JFrame {
      */
     public productDelete() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

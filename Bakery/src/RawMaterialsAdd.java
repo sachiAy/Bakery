@@ -20,6 +20,7 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
      */
     public RawMaterialsAdd() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -180,7 +181,7 @@ public class RawMaterialsAdd extends javax.swing.JFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         jXDatePicker2.setFormats(dateFormat);
         DateFormat sysDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String date_to_store1 = sysDate.format(jXDatePicker2.getDate()).toString();
+        String date_to_store1 = sysDate.format(jXDatePicker2.getDate());
 
         try {
             Statement s = DBconnector.getConnection().createStatement();

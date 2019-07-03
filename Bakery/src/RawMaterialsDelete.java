@@ -20,7 +20,9 @@ public class RawMaterialsDelete extends javax.swing.JFrame {
      */
     public RawMaterialsDelete() {
         initComponents();
+        setLocationRelativeTo(null);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

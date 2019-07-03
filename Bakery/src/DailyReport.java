@@ -34,6 +34,7 @@ public class DailyReport extends javax.swing.JFrame {
      */
     public DailyReport() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

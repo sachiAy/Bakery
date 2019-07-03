@@ -15,6 +15,7 @@ public class Reports extends javax.swing.JFrame {
      */
     public Reports() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

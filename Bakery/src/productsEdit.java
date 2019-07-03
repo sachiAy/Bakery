@@ -10,7 +10,6 @@ import net.proteanit.sql.DbUtils;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Sachini Ayeshika
@@ -22,6 +21,7 @@ public class productsEdit extends javax.swing.JFrame {
      */
     public productsEdit() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -141,36 +141,44 @@ public class productsEdit extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try{
-            String x="update products set productName='"+jTextField2.getText()+"', quantity='" +jTextField3.getText()+ "', unitPrice='" +jTextField4.getText()+"', sales='" +jTextField5.getText()+ "', date='" +String.valueOf(jXDatePicker1.getDate())+ "' where productId='"+jTextField1.getText()+"'";
+        try {
+            String x = "update products set productName='" + jTextField2.getText() + "', quantity='" + jTextField3.getText() + "', unitPrice='" + jTextField4.getText() + "', sales='" + jTextField5.getText() + "', date='" + String.valueOf(jXDatePicker1.getDate()) + "' where productId='" + jTextField1.getText() + "'";
             Statement s = DBconnector.getConnection().createStatement();
-             s.execute(x);
-        
-        }catch(Exception e){
+            s.execute(x);
+            JOptionPane.showMessageDialog(rootPane, "Updated");
+
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jXDatePicker1.setFormats("");
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e);
         }
-       
-        
-      
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          try {
-          
-            Statement s = DBconnector.getConnection().createStatement();    
-            ResultSet rs = s.executeQuery("select * from products where '"+jTextField1.getText()+"'");
-            if(rs.next()){
-                String x1=rs.getString("productName");
+        try {
+
+            Statement s = DBconnector.getConnection().createStatement();
+            ResultSet rs = s.executeQuery("select * from products where '" + jTextField1.getText() + "'");
+            if (rs.next()) {
+                String x1 = rs.getString("productName");
                 jTextField2.setText(x1);
-                String x2=rs.getString("quantity");
+                String x2 = rs.getString("quantity");
                 jTextField3.setText(x2);
-                String x4=rs.getString("unitPrice");
-                jTextField4.setText(x4);
-                String x5=rs.getString("sales");
-                jTextField5.setText(x5);
-                Date x6=rs.getDate("date");
-                jXDatePicker1.setDate(x6);
+                String x3 = rs.getString("unitPrice");
+                jTextField4.setText(x3);
+                String x4 = rs.getString("sales");
+                jTextField5.setText(x4);
+                Date x5 = rs.getDate("date");
+                jXDatePicker1.setDate(x5);
+
             }
         } catch (Exception e) {
             System.out.println("Exception = " + e);
@@ -179,14 +187,14 @@ public class productsEdit extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Dashboard goToDashboard=new Dashboard();
+        Dashboard goToDashboard = new Dashboard();
         goToDashboard.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Products goToPrevious=new Products();
+        Products goToPrevious = new Products();
         goToPrevious.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
